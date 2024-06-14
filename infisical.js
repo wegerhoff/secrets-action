@@ -9,6 +9,7 @@ export const UALogin = async ({ clientId, clientSecret, domain }) => {
   });
 
   try {
+    process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
     const response = await axios({
       method: "post",
       url: `${domain}/api/v1/auth/universal-auth/login`,
@@ -34,6 +35,7 @@ export const getRawSecrets = async ({
   shouldRecurse,
 }) => {
   try {
+    process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
     const response = await axios({
       method: "get",
       url: `${domain}/api/v3/secrets/raw`,
